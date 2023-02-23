@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="cart.css">
+
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">MEGAWIDTH</div>
+        <div class="right">
+            <div id="men">Men</div>
+            <div><a href="women.html">Women</a></div>
+            <div><a href="login.html">log in</a></div>
+            <div><a href="signup.html">Sign up</a></div>
+
+        </div>
+    </div>
+    <div id="container">
+        <div id="head">
+            <p>Shopping Cart</p>
+        </div>
+
+        <div class="tableheading">
+            <table>
+                <thead class="carttable">
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="head">
+            <p>What would you like to do next?</p>
+        </div>
+
+        <div id="Coupon-div">
+            <form action="">
+                <input id="Coupon" type="text" placeholder="Enter Your Coupon here">
+                <input type="submit" value="Apply">
+            </form>
+
+        </div>
+
+        <div id="total-div">
+            <p id="subtotal"></p>
+            <p id="total"></p>
+        </div>
+
+        <div id="cart-bottom-btn">
+            <button> <a href="men.html" style="color: white; text-decoration: none;">Continue Shopping</a></button>
+            <button><a href="success.html" style="color: white; text-decoration: none;">Checkout</a></button>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    var cartitems = JSON.parse(localStorage.getItem("cartItem"))
+
+    displayCart(cartitems)
+
+    function displayCart(cartItem) {
+        document.querySelector("tbody").textContent = ""
+        cartItem.map(function (data, index) {
+
+            var tr = document.createElement("tr");
+
+
+            var td1 = document.createElement("td")
+            var img = document.createElement("img")
+            img.setAttribute("src", data.image)
+            td1.append(img)
+
+
+
+            var td2 = document.createElement("td")
+            td2.textContent = data.name;
+
+            var td3 = document.createElement("td")
+            td3.textContent = "1";
+
+            var td4 = document.createElement("td")
+            td4.textContent = "RS" + " " + data.price + ".00";
+
+            var td5 = document.createElement("td")
+            td5.textContent = "RS" + " " + data.price + ".00"
+
+            var td6 = document.createElement("td")
+            td6.innerHTML = "Delete"
+            td6.addEventListener("click", function () {
+                deleteItems(index)
+            })
+
+            tr.append(td1, td2, td3, td4, td5, td6)
+            document.querySelector("tbody").append(tr);
+
+        });
+
+        // show total Price
+        var total = cartItem.reduce(function (acc, cv) {
+            return acc , cv.price;
+
+        },0);
+
+        document.querySelector("#subtotal").textContent = `Sub-Total: RS ${total}.00`
+        document.querySelector("#total").textContent = `Total: RS ${total}.00`
+
+        // Apply Coupon here
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var coupon_no = document.querySelector("#Coupon").value;
+            if (coupon_no == "masai30") {
+                total = Math.floor((30 / 100) * total)
+                document.querySelector("#subtotal").textContent = `Sub-Total: RS ${total}.00`;
+                document.querySelector("#total").textContent = `Total: RS ${total}.00`;
+                alert("Coupon Applied Successfully")
+
+            } else {
+                alert("Please enter correct coupon no.")
+            }
+        });
+    }
+</script>

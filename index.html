@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="left">MEGAWIDTH</div>
+        <div class="right">
+            <!-- <div><a href="men.html">Men</a></div> --> <div id="men">Men</div>
+            <div><a href="women.html">Women</a></div>
+            <!-- <div><a href="login.html">log in</a></div>
+            <div><a href="signup.html">Sign up</a></div> -->
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    document.querySelector("#men").addEventListener("click", menpage)
+    function menpage(){
+        window.location.href="men.html"
+    }
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="women.css">
+    <title>Women</title>
+    
+</head>
+<body>
+    <div class="nav">
+        <div class="left">MEGAWIDTH</div>
+        <div class="right">
+            <!-- <div><a href="men.html">Men</a></div> --> <div id="men">Men</div>
+            <div><a href="women.html">Women</a></div>
+            <!-- <div><a href="login.html">log in</a></div>
+            <div><a href="signup.html">Sign up</a></div> -->
+
+        </div>
+    </div>
+    <div id="container">
+        
+    </div>
+</body>
+</html>
+<script>
+    var womenData = [
+
+{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kshtxu80/dress/i/d/z/m-dv320-daevish-original-imag6fxn7fnrggra.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"25.00",
+    
+},{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kp8ntzk0/dress/r/i/z/s-aa-0119-boho-long-dress-aayu-original-imag3ghzyktnj3bz.jpeg?q=50",
+    name:"Women Maxi Black Dresst",
+    price:"35.00",
+    
+},{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kvpklu80/dress/r/3/4/s-aa-0119-mauve-boho-long-dress-aayu-original-imag8k648mcxpeud.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"35.00",
+    
+},
+{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kq6yefk0/dress/v/2/8/m-1083-sheetal-associates-original-imag49m2ggkzgekv.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"35.00",
+    
+},
+
+
+{
+    imgUrl:"https://rukminim1.flixcart.com/image/880/1056/klphn680/top/n/5/x/xl-regular-top-fab-star-original-imagyry2geb5ztzq.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"25.00",
+    
+},
+{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/knexksw0/dress/c/i/w/xxl-0011-paralians-original-imag23pqupjvpuju.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"35.00",
+    
+},{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kcc9q4w0/dress/a/y/e/xxl-rddr-014-rudraaksha-original-imafthukyaxfzhvj.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"35.00",
+    
+},
+{
+    imgUrl:"https://rukminim1.flixcart.com/image/580/696/kshtxu80/dress/i/d/z/m-dv320-daevish-original-imag6fxn7fnrggra.jpeg?q=50",
+    name:"Women Maxi Black Dress",
+    price:"35.00",
+    
+}
+]
+
+var cartArr=JSON.parse(localStorage.getItem("cartItem"))||[]
+   
+    womenData.map(function(data){
+    var div = document.createElement("div");
+
+    var image=document.createElement("img");
+    image.setAttribute("src",data.imgUrl);
+
+
+    var name1=document.createElement("p");
+    name1.textContent=data.name;
+
+    var price=document.createElement("p");
+    price.textContent=data.price;
+
+
+var but=document.createElement("button")
+but.textContent=" Add to cart"
+but.addEventListener("click",function(){
+    addToCart(data);
+});
+div.append(image,name1,price,but);
+
+    document.querySelector("#container").append(div)
+});
+function addToCart(data){
+        cartArr.push(data);
+        localStorage.setItem("cartItem",JSON.stringify(cartArr));
+        alert("Added Successfully");
+    };
+</script>
