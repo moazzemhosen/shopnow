@@ -36,8 +36,8 @@
     <div class="nav">
         <div class="left"><a href="index.html">MEGAWIDTH</a></div>
         <div class="right">
-            <!-- <div><a href="men.html">Men</a></div> --> <div id="men">Men</div>
-            <div><a href="women.html">Women</a></div>
+            <div><a href="men.html">Men</a></div> 
+            <!-- <div><a href="women.html">Women</a></div> -->
             <!-- <div><a href="login.html">log in</a></div>-->
             <div><a href="signup.html">Sign up</a></div> 
 
@@ -117,7 +117,7 @@ var cartArr=JSON.parse(localStorage.getItem("cartItem"))||[]
 
 
 var but=document.createElement("button")
-but.textContent=" Add to cart"
+but.textContent="cart"
 but.addEventListener("click",function(){
     addToCart(data);
 });
